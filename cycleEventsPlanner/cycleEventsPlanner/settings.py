@@ -92,7 +92,7 @@ WSGI_APPLICATION = 'cycleEventsPlanner.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "django_db_cycle",
+        "NAME": config('DB_NAME'),
         "USER": "postgres",
         "PASSWORD": config('DB_PASSWORD'),
         "HOST": config('DB_HOST'),
