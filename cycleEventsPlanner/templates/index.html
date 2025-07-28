@@ -1,10 +1,40 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Index Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={% static 'css/reset.css' %}>
+    <link rel="stylesheet" href={% static 'css/index.css' %}>
+    <title>Welcome</title>
 </head>
 <body>
-    <p>Temporary Index Page</p>
+    <header>
+        <div class="top-header">
+            <p>Welcome to the Cycle Events Planner !</p>
+        </div>
+    </header>
+    <main>
+        <div class="outer-container">
+            <div class="main-top">
+                <p>This incredible application gives you the flexibility to add, monitor, and subscribe for various cycling events in Bulgaria, and all over the world! Feel free to add all of your bikes, your best routes or trails that you ride and love, and share them with your frineds and whole bike community as well!</p>
+                <p>Funny and technical trails in the mountains? Outstanding extreme downhill racetracks? Tough climbs and long distances for super athletic crosscountry riders? Or maybe hundreds of kilometers for the most passionate road racers? We got that too. Even if you are not so into bike sports and ride into nature or towns just for fun - add your best routes as well.</p>
+                <p>Yes, we know that riding alone is great, but this time you want to get a company? Okay. First add your route and next post the event on the dashboard so you can get as much followers as possible for the best experince ever ! Comments and photos from events are also included !</p>
+            </div>
+            <div class="main-mid">
+                <a href="#">View Cycle Events</a>
+            </div>
+            <div class="main-bottom">
+                <a href="#" class="login-btn">Login</a>
+                <a href="#" class="reg-btn">Register</a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div>
+            <p>Cycle Events Planner - 2025 - Nikolay IV</p>
+        </div>
+    </footer>
 </body>
 </html>
