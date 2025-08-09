@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href={% static 'css/reset.css' %}>
-    <link rel="stylesheet" href={% static 'css/index.css' %}>
+    <link rel="stylesheet" href={% static 'css/about.css' %}>
     <title>Welcome</title>
 </head>
 <body>
@@ -25,10 +25,12 @@
             <div class="main-mid">
                 <a href="#">View Cycle Events</a>
             </div>
+            {% if not request.user.is_authenticated %}
             <div class="main-bottom">
-                <a href="#" class="login-btn">Login</a>
-                <a href="#" class="reg-btn">Register</a>
+                <a href="{% url 'login' %}" class="login-btn">Login</a>
+                <a href="{% url 'register' %}" class="reg-btn">Register</a>
             </div>
+            {% endif %}
         </div>
     </main>
     <footer>

@@ -1,0 +1,42 @@
+{% load static %}
+{% load placeholder %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={% static 'css/reset.css' %}>
+    <link rel="stylesheet" href={% static 'css/register.css' %}>
+    <title>Register</title>
+</head>
+<body>
+    <header>
+        <div class="top-header">
+            <p>Cycle Events Planner</p>
+        </div>
+    </header>
+    <main>
+        <div class="outer-container">
+            <div class="form-container">
+                <h2>Please, register a profile:</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.email|placeholder:'Email' }}
+                    {{ form.email.errors }}
+                    {{ form.password1|placeholder:'Password' }}
+                    {{ form.password1.errors }}
+                    {{ form.password2|placeholder:'Confirm Password' }}
+                    {{ form.password2.errors }}
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div>
+            <p>Cycle Events Planner - 2025 - Nikolay IV</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{% load static %}
+{% load placeholder %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={% static 'css/reset.css' %}>
+    <link rel="stylesheet" href={% static 'css/login.css' %}>
+    <title>Login</title>
+</head>
+<body>
+    <header>
+        <div class="top-header">
+            <p>Cycle Events Planner</p>
+        </div>
+    </header>
+    <main>
+        <div class="outer-container">
+            <div class="form-container">
+                <h2>Please, login:</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.username|placeholder:'Email' }}
+                    {{ form.username.errors }}
+                    {{ form.password|placeholder:'Password' }}
+                    {{ form.password.errors }}
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div>
+            <p>Cycle Events Planner - 2025 - Nikolay IV</p>
+        </div>
+    </footer>
+</body>
+</html>

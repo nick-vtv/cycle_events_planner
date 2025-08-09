@@ -1,0 +1,37 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={% static 'css/reset.css' %}>
+    <link rel="stylesheet" href={% static 'css/profile-delete.css' %}>
+    <title>Delete Profile</title>
+</head>
+<body>
+    <header>
+        <div class="top-header">
+            <p>Cycle Events Planner</p>
+        </div>
+    </header>
+    <main>
+        <div class="outer-container">
+            <div class="form-container">
+                <h2>Are you sure you want to delete your profile?</h2>
+                <p>Your current profile will be deleted, and your account will be deactivated. Your created routes and events will not be removed.</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit">DELETE</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div>
+            <p>Cycle Events Planner - 2025 - Nikolay IV</p>
+        </div>
+    </footer>
+</body>
+</html>
