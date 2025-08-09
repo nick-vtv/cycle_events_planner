@@ -7,8 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href={% static 'css/reset.css' %}>
-    <link rel="stylesheet" href={% static 'css/profile-delete.css' %}>
-    <title>Delete Profile</title>
+    <link rel="stylesheet" href={% static 'css/add-bike.css' %}>
+    <title>Add a Bike</title>
 </head>
 <body>
     <header>
@@ -19,11 +19,11 @@
     <main>
         <div class="outer-container">
             <div class="form-container">
-                <h2>Are you sure you want to delete your profile?</h2>
-                <p>Your current profile will be <strong>deleted</strong>, and your account will be <strong>deactivated</strong>. Your created bikes, routes and events will <strong>not be removed</strong>.</p>
+                <h2>Add your Bike:</h2>
                 <form method="post">
                     {% csrf_token %}
-                    <button type="submit">DELETE</button>
+                    {{ form }}
+                    <button type="submit">Add Bike</button>
                 </form>
             </div>
         </div>

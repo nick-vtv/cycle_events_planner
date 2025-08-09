@@ -19,9 +19,12 @@
     <main>
         <div class="outer-container">
             <div class="profile-container">
+                <h2>{{ object.nickname }}</h2>
                 <h2>{{ object.full_name }}</h2>
                 <p>{{ object.user.email }}</p>
-                <p>{{ object.age }}</p>
+                {% if object.age %}
+                    <p>{{ object.age }}</p>
+                {% endif %}
                 {% if object.profile_picture %}
                     <div class="profile-image">
                         <img src="{{ object.profile_picture.url }}" alt="profile picture">
