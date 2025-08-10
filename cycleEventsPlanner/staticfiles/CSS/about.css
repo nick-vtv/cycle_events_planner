@@ -80,3 +80,7 @@ footer {
     background-color: #c4b7a6;
     color: black;
 }
+
+footer a:hover {
+    color: grey;
+}

@@ -1,0 +1,51 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={% static 'css/reset.css' %}>
+    <link rel="stylesheet" href={% static 'css/route-details.css' %}>
+    <title>Route Details</title>
+</head>
+<body>
+    <header>
+        <div class="top-header">
+            <p>Cycle Events Planner</p>
+        </div>
+    </header>
+    <main>
+        <div class="outer-container">
+            <div class="content-container">
+                <p>{{ bike.manufacturer }}</p>
+                <p>{{ bike.model }}</p>
+                <p>{{ bike.get_type_display }}</p>
+                <p>{{ bike.get_geometry_display }}</p>
+                {% if bike.is_ebike %}
+                    <p>This is an E-BIKE</p>
+                {% endif %}
+                {% if bike.year %}
+                    <p>{{ bike.year }}</p>
+                {% endif %}
+                {% if bike.wheel_size %}
+                    <p>{{ bike.wheel_size }}</p>
+                {% endif %}
+                {% if bike.is_mullet %}
+                    <p>This is a Mullet Bike</p>
+                {% endif %}
+                {% if bike.weight %}
+                    <p>{{ bike.weight }}</p>
+                {% endif %}
+                {% if bike.picture %}
+                    <div class="content-image">
+                        <img src="{{ bike.picture }}" alt="profile picture">
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+    {% include 'common/footer.html' %}
+</body>
+</html>

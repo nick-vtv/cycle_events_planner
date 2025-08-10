@@ -7,8 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href={% static 'css/reset.css' %}>
-    <link rel="stylesheet" href={% static 'css/403.css' %}>
-    <title>Not Authorized</title>
+    <link rel="stylesheet" href={% static 'css/delete-bike.css' %}>
+    <title>Delete a Bike</title>
 </head>
 <body>
     <header>
@@ -18,7 +18,14 @@
     </header>
     <main>
         <div class="outer-container">
-            <h1>Sorry, but you are not authorized to view this page :(</h1>
+            <div class="form-container">
+                <h2>Are you sure you want to delete your bike?</h2>
+                <p>{{ bike }} {{ bike.year }}</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit">DELETE</button>
+                </form>
+            </div>
         </div>
     </main>
     {% include 'common/footer.html' %}

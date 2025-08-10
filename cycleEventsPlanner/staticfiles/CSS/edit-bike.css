@@ -101,15 +101,28 @@ form select {
 }
 
 form input[type="checkbox"] {
-    font-size: 1.2rem;
     height: 20px;
     width: 20px;
-    border: 1px solid #b9936c;
     accent-color: #b9936c;
+    outline: none;
 }
 
 input:focus {
     outline: 2px solid #b9936c;
+}
+
+input[type="file"] {
+    border: none;
+    background-color: #dac292;
+    padding-left: 0;
+}
+
+input[type="file"]::file-selector-button {
+    background-color: #b9936c;
+    color: black;
+    border: 1px solid black;
+    padding: 6px 12px;
+    cursor: pointer;
 }
 
 .form-container button:hover {
@@ -120,3 +133,4 @@ input:focus {
 footer a:hover {
     color: grey;
 }
+
