@@ -58,7 +58,7 @@ class Route(models.Model):
         null=True,
     )
 
-    created_at = models.DateTimeField(
+    created_at = models.DateField(
         auto_now_add=True,
     )
 

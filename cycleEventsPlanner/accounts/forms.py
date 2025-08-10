@@ -16,4 +16,35 @@ class AccountCreationForm(UserCreationForm):
 class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = Profile
-        exclude = ['user']
+        fields = ['nickname', 'first_name', 'last_name', 'age', 'profile_picture', ]
+        labels = {
+            'nickname': 'Nickname',
+            'first_name': 'First Name',
+            'last_name': 'Last Name',
+            'age': 'Age',
+            'profile_picture': 'Upload a Profile Picture (optional)',
+        }
+
+        widgets = {
+            'nickname': forms.TextInput(
+                attrs={
+                    'placeholder': 'Enter your nickname:'
+                }
+            ),
+            'first_name': forms.TextInput(
+                attrs={
+                    'placeholder': 'Enter your first name (optional):'
+                }
+            ),
+            'last_name': forms.TextInput(
+                attrs={
+                    'placeholder': 'Enter your last name (optional):'
+                }
+            ),
+            'age': forms.NumberInput(
+                attrs={
+                    'placeholder': 'Enter your age (optional):'
+                }
+            ),
+            'profile_picture': forms.FileInput(),
+        }

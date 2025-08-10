@@ -19,30 +19,32 @@
     <main>
         <div class="outer-container">
             <div class="content-container">
-                <p>{{ bike.manufacturer }}</p>
-                <p>{{ bike.model }}</p>
-                <p>{{ bike.get_type_display }}</p>
-                <p>{{ bike.get_geometry_display }}</p>
-                {% if bike.is_ebike %}
-                    <p>This is an E-BIKE</p>
+                <p>{{ route.name }}</p>
+                <p>{{ route.get_difficulty_display }}</p>
+                <p>{{ route.get_type_display }}</p>
+                {% if route.description %}
+                    <p>{{ route.description }}</p>
                 {% endif %}
-                {% if bike.year %}
-                    <p>{{ bike.year }}</p>
+                {% if route.distance %}
+                    <p>{{ route.distance }}</p>
                 {% endif %}
-                {% if bike.wheel_size %}
-                    <p>{{ bike.wheel_size }}</p>
+                <p>{{ route.start_point }}</p>
+                <p>{{ route.end_point }}</p>
+                {% if route.is_circular %}
+                    <p>This is a circular route !</p>
                 {% endif %}
-                {% if bike.is_mullet %}
-                    <p>This is a Mullet Bike</p>
-                {% endif %}
-                {% if bike.weight %}
-                    <p>{{ bike.weight }}</p>
-                {% endif %}
-                {% if bike.picture %}
+                {% if route.map_image %}
                     <div class="content-image">
-                        <img src="{{ bike.picture }}" alt="profile picture">
+                        <img src="{{ route.map_image }}" alt="map image">
                     </div>
                 {% endif %}
+                {% if route.route_photo %}
+                    <div class="content-image">
+                        <img src="{{ route.route_photo.url }}" alt="route photo">
+                    </div>
+                {% endif %}
+                <p>Date Created : <span>{{ route.created_at }}</span></p>
+                <p>Created by : <span>{{ route.created_by.profile }}</span></p>
             </div>
         </div>
     </main>

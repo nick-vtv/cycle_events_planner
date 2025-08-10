@@ -7,8 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href={% static 'css/reset.css' %}>
-    <link rel="stylesheet" href={% static 'css/add-route.css' %}>
-    <title>Add a Route</title>
+    <link rel="stylesheet" href={% static 'css/edit-route.css' %}>
+    <title>Edit a Route</title>
 </head>
 <body>
     <header>
@@ -19,11 +19,11 @@
     <main>
         <div class="outer-container">
             <div class="form-container">
-                <h2>Add your Route:</h2>
+                <h2>Edit your Route:</h2>
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form }}
-                    <button type="submit">Add Route</button>
+                    <button type="submit">Edit Route</button>
                 </form>
             </div>
         </div>

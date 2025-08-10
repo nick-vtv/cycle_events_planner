@@ -33,22 +33,22 @@ class BikeBaseForm(forms.ModelForm):
             ),
             'year': forms.NumberInput(
                 attrs={
-                    'placeholder': 'Your bike year of production:'
+                    'placeholder': 'Your bike year of production (optional):'
                 }
             ),
             'wheel_size': forms.NumberInput(
                 attrs={
-                    'placeholder': 'Your bike wheel size (in INCHES):'
+                    'placeholder': 'Your bike wheel size (in INCHES) (optional):'
                 }
             ),
             'weight': forms.NumberInput(
                 attrs={
-                    'placeholder': 'Your bike weight (in KGS):'
+                    'placeholder': 'Your bike weight (in KGS) (optional):'
                 }
             ),
             'picture': forms.TextInput(
                 attrs={
-                    'placeholder': 'Link to an image of your bike:'
+                    'placeholder': 'Link to an image of your bike (optional):'
                 }
             )
         }
