@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
+from common.validators import validate_current_date
 from routes.models import Route
 
 UserModel = get_user_model()
@@ -17,7 +18,9 @@ class Event(models.Model):
         related_name='route_events',
     )
 
-    event_date = models.DateField()
+    event_date = models.DateField(
+        validators=[validate_current_date, ]
+    )
 
     event_time = models.TimeField()
 
