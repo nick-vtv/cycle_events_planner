@@ -19,28 +19,18 @@
     <main>
         <div class="outer-container">
             <div class="content-container">
-                <p>{{ bike.manufacturer }}</p>
-                <p>{{ bike.model }}</p>
-                <p>{{ bike.get_type_display }}</p>
-                <p>{{ bike.get_geometry_display }}</p>
-                {% if bike.is_ebike %}
-                    <p>This is an E-BIKE</p>
+                <p>{{ event.name }}</p>
+                <p>{{ event.route }}</p>
+                <p>{{ event.event_date }}</p>
+                <p>{{ event.event_time }}</p>
+                {% if event.description %}
+                    <p>{{ event.description }}</p>
                 {% endif %}
-                {% if bike.year %}
-                    <p>{{ bike.year }}</p>
-                {% endif %}
-                {% if bike.wheel_size %}
-                    <p>{{ bike.wheel_size }}</p>
-                {% endif %}
-                {% if bike.is_mullet %}
-                    <p>This is a Mullet Bike</p>
-                {% endif %}
-                {% if bike.weight %}
-                    <p>{{ bike.weight }}</p>
-                {% endif %}
-                {% if bike.picture %}
+                <p>Date Created : <span>{{ event.created_at }}</span></p>
+                <p>Created by : <span>{{ event.created_by.profile }}</span></p>
+                {% if event.route.route_photo %}
                     <div class="content-image">
-                        <img src="{{ bike.picture }}" alt="profile picture">
+                        <img src="{{ event.route.route_photo.url }}" alt="event picture">
                     </div>
                 {% endif %}
             </div>

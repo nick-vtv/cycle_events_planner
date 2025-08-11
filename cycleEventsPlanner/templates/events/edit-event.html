@@ -20,7 +20,7 @@
         <div class="outer-container">
             <div class="form-container">
                 <h2>Edit your Event:</h2>
-                <form method="post" enctype="multipart/form-data">
+                <form method="post">
                     {% csrf_token %}
                     {{ form }}
                     <button type="submit">Edit Event</button>
