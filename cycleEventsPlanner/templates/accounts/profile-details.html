@@ -31,6 +31,16 @@
                     </div>
                 {% endif %}
             </div>
+            {% if object.pk == request.user.pk %}
+                <div class="button-container">
+                    <div class="btn">
+                        <a href="#">EDIT</a>
+                    </div>
+                    <div class="btn">
+                        <a href="#">DELETE</a>
+                    </div>
+                </div>
+            {% endif %}
         </div>
     </main>
     {% include 'common/footer.html' %}

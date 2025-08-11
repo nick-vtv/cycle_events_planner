@@ -23,7 +23,7 @@
                 <p>Yes, we know that riding alone is great, but this time you want to get a company? Okay. First add your route and next post the event on the dashboard so you can get as much followers as possible for the best experince ever ! Comments and photos from events are also included !</p>
             </div>
             <div class="main-mid">
-                <a href="#">View Cycle Events</a>
+                <a href="{% url 'dashboard' %}">View Cycle Events</a>
             </div>
             {% if not request.user.is_authenticated %}
             <div class="main-bottom">
