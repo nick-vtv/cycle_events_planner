@@ -1,0 +1,19 @@
+<div class="top-header">
+    <div class="header-left">
+        <a href="{% url 'add-event' %}" class="left-first-p">Add Event</a>
+        <a href="{% url 'add-route' %}" class="left-second-p">Add Route</a>
+        <a href="#" class="left-third-p">View All</a>
+    </div>
+    <div class="header-center">
+        <a href="{% url 'dashboard' %}">Cycle Events Planner</a>
+    </div>
+    <div class="header-right">
+        <a href="#" class="right-third-p">Gallery</a>
+        <a href="{% url 'profile-detail' request.user.pk %}" class="right-second-p">My Profile</a>
+        <a href="{% url 'logout' %}" onclick="event.preventDefault(); document.getElementById('logout').submit();" class="right-first-p">Logout</a>
+    </div>
+</div>
+
+<form style="display: none" id="logout" action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+</form>

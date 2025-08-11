@@ -12,7 +12,7 @@ class EventAddView(LoginRequiredMixin, CreateView):
     model = Event
     form_class = EventCreateForm
     template_name = 'events/add-event.html'
-    success_url = reverse_lazy('about')
+    success_url = reverse_lazy('dashboard')
 
     def form_valid(self, form):
         self.object = form.save(commit=False)

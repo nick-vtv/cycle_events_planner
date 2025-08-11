@@ -8,13 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href={% static 'css/reset.css' %}>
     <link rel="stylesheet" href={% static 'css/event-details.css' %}>
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
     <title>Event Details</title>
 </head>
 <body>
     <header>
-        <div class="top-header">
-            <p>Cycle Events Planner</p>
-        </div>
+        {% if request.user.is_authenticated %}
+            {% include 'common/header-authorized.html' %}
+        {% else %}
+            {% include 'common/header-anonymous.html' %}
+        {% endif %}
     </header>
     <main>
         <div class="outer-container">

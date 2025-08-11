@@ -1,0 +1,81 @@
+header {
+    background-color: #b9936c;
+}
+
+.top-header {
+    padding: 15px;
+    font-weight: normal;
+    font-size: 4rem;
+    display: flex;
+    justify-content: space-between;
+    height: 125px;
+}
+
+.header-center {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 23px;
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.left-first-p {
+    padding-right: 20px;
+    border-right: 1px solid black;
+}
+
+.left-second-p {
+    padding-right: 20px;
+    padding-left: 20px;
+    border-right: 1px solid black;
+}
+
+.left-third-p {
+    padding-left: 20px;
+}
+
+.right-third-p {
+    padding-right: 20px;
+}
+
+.right-second-p {
+    padding-right: 20px;
+    padding-left: 20px;
+    border-left: 1px solid black;
+}
+
+.right-first-p {
+    padding-left: 20px;
+    border-left: 1px solid black;
+}
+
+.left-first-a {
+    padding-right: 20px;
+    border-right: 1px solid black;
+}
+
+.left-second-a {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.right-second-a {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.right-first-a {
+    padding-left: 20px;
+    border-left: 1px solid black;
+}
+
+.top-header a:hover {
+    color: gray;
+}

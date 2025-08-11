@@ -14,7 +14,7 @@ UserModel = get_user_model()
 class AccountRegisterView(CreateView):
     model = UserModel
     form_class = AccountCreationForm
-    success_url = reverse_lazy('about')
+    success_url = reverse_lazy('dashboard')
     template_name = 'accounts/register.html'
 
     def form_valid(self, form):
@@ -43,7 +43,7 @@ class ProfileUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class ProfileDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Profile
-    success_url = reverse_lazy('about')
+    success_url = reverse_lazy('dashboard')
     template_name = 'accounts/profile-delete.html'
 
     def test_func(self):

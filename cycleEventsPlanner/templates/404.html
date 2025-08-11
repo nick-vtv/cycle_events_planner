@@ -1,10 +1,29 @@
+{% load static %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={% static 'css/reset.css' %}>
+    <link rel="stylesheet" href={% static 'css/403.css' %}>
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
     <title>Not Found</title>
 </head>
 <body>
-    <p>Oops, this page is missing...</p>
+    <header>
+        {% if request.user.is_authenticated %}
+            {% include 'common/header-authorized.html' %}
+        {% else %}
+            {% include 'common/header-anonymous.html' %}
+        {% endif %}
+    </header>
+    <main>
+        <div class="outer-container">
+            <h1>Oops, this page is missing... :(</h1>
+        </div>
+    </main>
+    {% include 'common/footer.html' %}
 </body>
 </html>

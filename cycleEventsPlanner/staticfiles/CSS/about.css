@@ -25,9 +25,15 @@ main {
 .top-header {
     padding: 15px;
     font-weight: normal;
-    font-size: 5rem;
+    font-size: 4.5rem;
     display: flex;
     justify-content: center;
+    height: 125px;
+}
+
+.about-center {
+    display: flex;
+    align-items: center;
 }
 
 .main-top {
@@ -65,7 +71,7 @@ main {
     flex-grow: 1;
 }
 
-.login-btn:hover, .reg-btn:hover {
+.login-btn:hover, .reg-btn:hover, .dash-btn:hover {
     color: grey;
 }
 
