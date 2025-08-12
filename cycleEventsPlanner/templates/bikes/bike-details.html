@@ -21,31 +21,43 @@
     </header>
     <main>
         <div class="outer-container">
-            <div class="content-container">
-                <p>{{ bike.manufacturer }}</p>
-                <p>{{ bike.model }}</p>
-                <p>{{ bike.get_type_display }}</p>
-                <p>{{ bike.get_geometry_display }}</p>
-                {% if bike.is_ebike %}
-                    <p>This is an E-BIKE</p>
-                {% endif %}
-                {% if bike.year %}
-                    <p>{{ bike.year }}</p>
-                {% endif %}
-                {% if bike.wheel_size %}
-                    <p>{{ bike.wheel_size }}</p>
-                {% endif %}
-                {% if bike.is_mullet %}
-                    <p>This is a Mullet Bike</p>
-                {% endif %}
-                {% if bike.weight %}
-                    <p>{{ bike.weight }}</p>
-                {% endif %}
+            <div class="bike-container">
                 {% if bike.picture %}
-                    <div class="content-image">
+                    <div class="bike-image">
                         <img src="{{ bike.picture }}" alt="bike picture">
                     </div>
+                {% else %}
+                    <div class="bike-image">
+                        <img src="{% static 'bike-abstract.jpg' %}" alt="no bike picture">
+                    </div>
                 {% endif %}
+                <div class="bike-text">
+                    <p><strong>{{ bike.manufacturer }}</strong></p>
+                    <p><strong>{{ bike.model }}</strong></p>
+                    <p>Type: {{ bike.get_type_display }}</p>
+                    <p>Geometry: {{ bike.get_geometry_display }}</p>
+                    {% if bike.is_ebike %}
+                        <p style="font-style: italic">This is an E-BIKE</p>
+                    {% endif %}
+                    {% if bike.year %}
+                        <p>Model Year: {{ bike.year }}</p>
+                    {% endif %}
+                    {% if bike.wheel_size %}
+                        <p>Wheel Size (IN): {{ bike.wheel_size }}</p>
+                    {% endif %}
+                    {% if bike.is_mullet %}
+                        <p style="font-style: italic">This is a Mullet Bike</p>
+                    {% endif %}
+                    {% if bike.weight %}
+                        <p>Weight (KG): {{ bike.weight }}</p>
+                    {% endif %}
+                    {% if bike.user.pk == request.user.pk %}
+                        <div class="button-container">
+                            <a class="btn" href="{% url 'edit-bike' bike.pk %}"><p>EDIT</p></a>
+                            <a class="btn" href="{% url 'delete-bike' bike.pk %}"><p>DELETE</p></a>
+                        </div>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </main>
