@@ -16,14 +16,19 @@ main {
     flex-direction: column;
     align-content: center;
     justify-content: center;
+    align-items: center;
 }
 
 .outer-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     padding-top: 50px;
     padding-bottom: 50px;
+    width: 80%;
+    flex-wrap: wrap;
+    gap: 60px;
+    justify-content: space-between;
 }
 
 .top-header {
@@ -41,30 +46,29 @@ footer {
     color: black;
 }
 
-.bike-container {
-	display: flex;
-    flex-direction: row;
-	width: 60%;
+.content-container {
+	width: 47%;
 	background-color: #dac292;
 	padding: 25px;
-	margin-bottom: 30px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    justify-content: space-between;
-    gap: 25px;
 }
 
-.bike-image {
-    height: 350px;
-    width: 350px;
+.content-image {
+    height: 300px;
+    width: 300px;
 }
 
-.bike-image img {
+.content-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.bike-text {
+footer a:hover {
+    color: grey;
+}
+
+.content-text {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -72,53 +76,33 @@ footer {
     justify-content: space-between;
 }
 
-.bike-text p {
-    font-size: 1.3rem;
-    color: black;
+.top-content-container, .mid-content-container {
+    font-size: 2.4rem;
+    font-weight: bold;
 }
 
-.button-container {
+#bike-owner-label {
+    font-style: italic;
+    font-size: 1rem;
+}
+
+#bike-owner {
+    font-size: 1.4rem;
+}
+
+.content-container-inner {
     display: flex;
     flex-direction: row;
-    gap: 25px;
-
+    justify-content: space-between;
+    gap: 10px;
 }
 
-.btn {
-	background-color: #b9936c;
-	color: black;
-	font-weight: bold;
-	border: 1px solid #b9936c;
-	width: 100%;
-	height: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.btn p {
-    font-size: 1.2rem;
-}
-
-.btn:hover {
-    outline: 2px solid dimgrey;
-}
-
-.btn:hover p {
-    color: dimgrey;
-}
-
-footer a:hover {
-    color: grey;
+.content-container:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .title-container p {
     text-align: center;
     color: black;
     font-size: 2.5rem;
-}
-
-#bike-brand, #bike-model {
-    font-size: 1.6rem;
 }

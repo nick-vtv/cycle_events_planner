@@ -32,19 +32,19 @@
                     </div>
                 {% endif %}
                 <div class="profile-text">
-                        {% if object.pk == request.user.pk %}
-                            <p class="profile-email">Email: {{ object.user.email }}</p>
-                        {% endif %}
-                        <p class="profile-nickname">Nickname: {{ object.nickname }}</p>
-                        {% if object.pk == request.user.pk %}
-                            <p class="profile-date">Date Created: {{ object.user.created_at }}</p>
-                        {% endif %}
-                        {% if object.first_name or object.last_name %}
-                            <p class="profile-name">Name: {{ object.full_name }}</p>
-                        {% endif %}
-                        {% if object.age %}
-                            <p class="profile-age">Age: {{ object.age }}</p>
-                        {% endif %}
+                    {% if object.pk == request.user.pk %}
+                        <p class="profile-email">Email: {{ object.user.email }}</p>
+                    {% endif %}
+                    <p class="profile-nickname">Nickname: {{ object.nickname }}</p>
+                    {% if object.pk == request.user.pk %}
+                        <p class="profile-date">Date Created: {{ object.user.created_at }}</p>
+                    {% endif %}
+                    {% if object.first_name or object.last_name %}
+                        <p class="profile-name">Name: {{ object.full_name }}</p>
+                    {% endif %}
+                    {% if object.age %}
+                        <p class="profile-age">Age: {{ object.age }}</p>
+                    {% endif %}
                     {% if object.pk == request.user.pk %}
                         <div class="button-container">
                             <a class="btn" href="{% url 'profile-update' request.user.pk %}"><p>EDIT</p></a>

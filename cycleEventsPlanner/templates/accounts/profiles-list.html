@@ -1,0 +1,65 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={% static 'css/reset.css' %}>
+    <link rel="stylesheet" href={% static 'css/profiles-list.css' %}>
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <title>Members</title>
+</head>
+<body>
+    <header>
+        {% if request.user.is_authenticated %}
+            {% include 'common/header-authorized.html' %}
+        {% else %}
+            {% include 'common/header-anonymous.html' %}
+        {% endif %}
+    </header>
+    <main>
+        <div class="title-container">
+            <p>All Members:</p>
+        </div>
+        <div class="outer-container">
+            {% for profile in profiles %}
+                <div class="content-container">
+                    <a href="{% url 'profile-detail' profile.pk %}">
+                        <div class="content-container-inner">
+                            {% if profile.profile_picture %}
+                                <div class="content-image">
+                                    <img src="{{ profile.profile_picture.url }}" alt="profile picture">
+                                </div>
+                            {% else %}
+                                <div class="content-image">
+                                    <img src="{% static 'bike-profile-abstract.jpg' %}" alt="no profile picture">
+                                </div>
+                            {% endif %}
+                            <div class="content-text">
+                                <div class="top-content-container">
+                                    <p>{{ profile.nickname }}</p>
+                                </div>
+                                <div class="mid-content-container">
+                                    {% if profile.first_name or profile.last_name %}
+                                        <p>{{ profile.full_name }}</p>
+                                    {% endif %}
+                                </div>
+                                <div class="lower-content-container">
+                                    {% if profile.age %}
+                                        <p>Age: {{ profile.age }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% empty %}
+                NO PROFILES
+            {% endfor %}
+        </div>
+    </main>
+    {% include 'common/footer.html' %}
+</body>
+</html>

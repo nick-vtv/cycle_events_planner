@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
-from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView, ListView
 
 from accounts.forms import AccountCreationForm, ProfileEditForm
 from accounts.models import Profile, Account
@@ -60,3 +60,9 @@ class ProfileDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             account_to_deactivate.save()
 
         return response
+
+
+class ProfileListView(LoginRequiredMixin, ListView):
+    model = Profile
+    context_object_name = 'profiles'
+    template_name = 'accounts/profiles-list.html'

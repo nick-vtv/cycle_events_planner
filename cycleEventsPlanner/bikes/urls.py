@@ -1,9 +1,10 @@
 from django.urls import path, include
 
-from bikes.views import BikeAddView, BikeDetailView, BikeUpdateView, BikeDeleteView
+from bikes.views import BikeAddView, BikeDetailView, BikeUpdateView, BikeDeleteView, BikeListView
 
 urlpatterns = [
     path('add/', BikeAddView.as_view(), name='add-bike'),
+    path('all/', BikeListView.as_view(), name='all-bikes'),
     path('<int:pk>/', include([
         path('', BikeDetailView.as_view(), name='bike-details'),
         path('edit/', BikeUpdateView.as_view(), name='edit-bike'),

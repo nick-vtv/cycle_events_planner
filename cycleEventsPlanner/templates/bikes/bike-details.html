@@ -35,8 +35,8 @@
                     </div>
                 {% endif %}
                 <div class="bike-text">
-                    <p><strong>{{ bike.manufacturer }}</strong></p>
-                    <p><strong>{{ bike.model }}</strong></p>
+                    <p id="bike-brand"><strong>{{ bike.manufacturer }}</strong></p>
+                    <p id="bike-model"><strong>{{ bike.model }}</strong></p>
                     <p>Type: {{ bike.get_type_display }}</p>
                     <p>Geometry: {{ bike.get_geometry_display }}</p>
                     {% if bike.is_ebike %}

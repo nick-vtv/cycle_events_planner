@@ -22,7 +22,9 @@ class BikeAddView(LoginRequiredMixin, CreateView):
 
 
 class BikeListView(LoginRequiredMixin, ListView):
-    pass
+    model = Bike
+    context_object_name = 'bikes'
+    template_name = 'bikes/bikes-list.html'
 
 
 class BikeDetailView(LoginRequiredMixin, DetailView):
