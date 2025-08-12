@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
 from django.utils import timezone
 from django.views.generic import ListView
 
+from common.models import Subscribe
 from events.models import Event
 
 
@@ -12,6 +14,20 @@ def about(request):
 
 def view_all(request):
     return render(request, 'common/view-all.html')
+
+@login_required
+def subscribe(request, event_pk):
+    event = Event.objects.get(pk=event_pk)
+    subscription = Subscribe.objects.filter(for_event__pk=event.pk, from_profile=request.user).first()
+
+    if subscription:
+        subscription.delete()
+    else:
+        Subscribe.objects.create(
+            for_event=event,
+            from_profile=request.user,
+        )
+    return redirect('event-details', pk=event.pk)
 
 
 class DashboardView(ListView):

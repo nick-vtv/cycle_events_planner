@@ -52,7 +52,7 @@
                         </div>
                     {% endif %}
                     <div class="button-container" id="subscribe-event-btn">
-                        <a class="btn" href="#"><p>SUBSCRIBE</p></a>
+                        <a class="btn" href="{% url 'subscribe' event_pk=event.pk %}"><p>SUBSCRIBE</p></a>
                     </div>
                 </div>
             </div>

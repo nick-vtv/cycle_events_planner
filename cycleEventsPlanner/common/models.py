@@ -5,7 +5,21 @@ from events.models import Event
 
 UserModel = get_user_model()
 
-# Create your models here.
+
+class Subscribe(models.Model):
+    from_profile = models.ForeignKey(
+        UserModel,
+        on_delete=models.CASCADE,
+        related_name='subscriptions',
+    )
+
+    for_event = models.ForeignKey(
+        to=Event,
+        on_delete=models.CASCADE,
+        related_name='subscribed',
+    )
+
+
 class Comment(models.Model):
     for_event = models.ForeignKey(
         to=Event,
