@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView
 
 from routes.forms import RouteCreateForm, RouteEditForm
@@ -36,7 +36,9 @@ class RouteUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     form_class = RouteEditForm
     context_object_name = 'route'
     template_name = 'routes/edit-route.html'
-    success_url = reverse_lazy('about')
 
     def test_func(self):
         return self.request.user.pk == self.get_object().created_by.pk
+
+    def get_success_url(self):
+        return reverse('route-details', kwargs={'pk': self.object.pk})

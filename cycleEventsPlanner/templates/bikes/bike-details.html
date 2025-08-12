@@ -20,6 +20,9 @@
         {% endif %}
     </header>
     <main>
+        <div class="title-container">
+            <p>Bike Details:</p>
+        </div>
         <div class="outer-container">
             <div class="bike-container">
                 {% if bike.picture %}
@@ -42,7 +45,7 @@
                     {% if bike.year %}
                         <p>Model Year: {{ bike.year }}</p>
                     {% endif %}
-                    {% if bike.wheel_size %}
+                    {% if bike.wheel_size and not bike.is_mullet %}
                         <p>Wheel Size (IN): {{ bike.wheel_size }}</p>
                     {% endif %}
                     {% if bike.is_mullet %}

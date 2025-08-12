@@ -20,34 +20,50 @@
         {% endif %}
     </header>
     <main>
+        <div class="title-container">
+            <p>Route Details:</p>
+        </div>
         <div class="outer-container">
-            <div class="content-container">
-                <p>{{ route.name }}</p>
-                <p>{{ route.get_difficulty_display }}</p>
-                <p>{{ route.get_type_display }}</p>
-                {% if route.description %}
-                    <p>{{ route.description }}</p>
+            <div class="route-container">
+                {% if route.route_photo %}
+                    <div class="route-image">
+                        <img src="{{ route.route_photo.url }}" alt="route photo">
+                    </div>
+                {% else %}
+                    <div class="route-image">
+                        <img src="{% static 'abstract-trail.jpg' %}" alt="no route photo">
+                    </div>
                 {% endif %}
-                {% if route.distance %}
-                    <p>{{ route.distance }}</p>
-                {% endif %}
-                <p>{{ route.start_point }}</p>
-                <p>{{ route.end_point }}</p>
-                {% if route.is_circular %}
-                    <p>This is a circular route !</p>
-                {% endif %}
+                <div class="route-text">
+                    <p><strong>{{ route.name }}</strong></p>
+                    <p>Difficulty: {{ route.get_difficulty_display }}</p>
+                    <p>Type: {{ route.get_type_display }}</p>
+                    {% if route.description %}
+                        <p>Description: {{ route.description }}</p>
+                    {% endif %}
+                    {% if route.distance %}
+                        <p>Distance (KM): {{ route.distance }}</p>
+                    {% endif %}
+                    <p>Start Point: {{ route.start_point }}</p>
+                    <p>End Point: {{ route.end_point }}</p>
+                    {% if route.is_circular %}
+                        <p style="font-style: italic">This is a circular route !</p>
+                    {% endif %}
+                    <p>Date Created : <span>{{ route.created_at }}</span></p>
+                    {% if route.created_by.profile %}
+                        <p>Created by : <span><a href="{% url 'profile-detail' route.created_by.pk %}" id="route-profile-link">{{ route.created_by.profile }}</a></span></p>
+                    {% endif %}
+                    {% if route.created_by.pk == request.user.pk %}
+                        <div class="button-container">
+                            <a class="btn" href="{% url 'edit-route' route.pk %}"><p>EDIT</p></a>
+                        </div>
+                    {% endif %}
+                </div>
                 {% if route.map_image %}
-                    <div class="content-image">
+                    <div class="route-image">
                         <img src="{{ route.map_image }}" alt="map image">
                     </div>
                 {% endif %}
-                {% if route.route_photo %}
-                    <div class="content-image">
-                        <img src="{{ route.route_photo.url }}" alt="route photo">
-                    </div>
-                {% endif %}
-                <p>Date Created : <span>{{ route.created_at }}</span></p>
-                <p>Created by : <span>{{ route.created_by.profile }}</span></p>
             </div>
         </div>
     </main>

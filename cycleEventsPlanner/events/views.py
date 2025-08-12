@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView
 
 from events.forms import EventCreateForm, EventEditForm
@@ -36,7 +36,9 @@ class EventUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     form_class = EventEditForm
     context_object_name = 'event'
     template_name = 'events/edit-event.html'
-    success_url = reverse_lazy('about')
 
     def test_func(self):
         return self.request.user.pk == self.get_object().created_by.pk
+
+    def get_success_url(self):
+        return reverse('event-details', kwargs={'pk': self.object.pk})

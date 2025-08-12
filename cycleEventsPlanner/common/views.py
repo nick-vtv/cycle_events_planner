@@ -10,6 +10,10 @@ def about(request):
     return render(request, 'common/about.html')
 
 
+def view_all(request):
+    return render(request, 'common/view-all.html')
+
+
 class DashboardView(ListView):
     model = Event
     context_object_name = 'events'

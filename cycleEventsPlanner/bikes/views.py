@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 
 from bikes.forms import BikeCreateForm, BikeEditForm
@@ -36,10 +36,12 @@ class BikeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     form_class = BikeEditForm
     context_object_name = 'bike'
     template_name = 'bikes/edit-bike.html'
-    success_url = reverse_lazy('about')
 
     def test_func(self):
         return self.request.user.pk == self.get_object().user.pk
+
+    def get_success_url(self):
+        return reverse('bike-details', kwargs={'pk': self.object.pk})
 
 
 class BikeDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):

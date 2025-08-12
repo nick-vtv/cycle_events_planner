@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model, login
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
 from accounts.forms import AccountCreationForm, ProfileEditForm
@@ -35,10 +35,12 @@ class ProfileUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Profile
     form_class = ProfileEditForm
     template_name = 'accounts/profile-edit.html'
-    success_url = reverse_lazy('about')
 
     def test_func(self):
         return self.request.user.pk == self.kwargs['pk']
+
+    def get_success_url(self):
+        return reverse('profile-detail', kwargs={'pk': self.object.pk})
 
 
 class ProfileDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):

@@ -20,22 +20,41 @@
         {% endif %}
     </header>
     <main>
+        <div class="title-container">
+            <p>Event Details:</p>
+        </div>
         <div class="outer-container">
-            <div class="content-container">
-                <p>{{ event.name }}</p>
-                <p>{{ event.route }}</p>
-                <p>{{ event.event_date }}</p>
-                <p>{{ event.event_time }}</p>
-                {% if event.description %}
-                    <p>{{ event.description }}</p>
-                {% endif %}
-                <p>Date Created : <span>{{ event.created_at }}</span></p>
-                <p>Created by : <span>{{ event.created_by.profile }}</span></p>
+            <div class="event-container">
                 {% if event.route.route_photo %}
-                    <div class="content-image">
+                    <div class="event-image">
                         <img src="{{ event.route.route_photo.url }}" alt="event picture">
                     </div>
+                {% else %}
+                    <div class="event-image">
+                        <img src="{% static 'mtb-event.jpg' %}" alt="no event picture">
+                    </div>
                 {% endif %}
+                <div class="event-text">
+                    <p><strong>{{ event.name }}</strong></p>
+                    <p>Route: <span><a href="{% url 'route-details' event.route.pk %}" id="event-route-link">{{ event.route }}</a></span></p>
+                    <p>Event Date: {{ event.event_date }}</p>
+                    <p>Event Time: {{ event.event_time }}</p>
+                    {% if event.description %}
+                        <p>Description: {{ event.description }}</p>
+                    {% endif %}
+                    <p>Date Created : <span>{{ event.created_at }}</span></p>
+                    {% if event.created_by.profile %}
+                        <p>Created by : <span><a href="{% url 'profile-detail' event.created_by.pk %}" id="event-profile-link">{{ event.created_by.profile }}</a></span></p>
+                    {% endif %}
+                    {% if event.created_by.pk == request.user.pk %}
+                        <div class="button-container" id="edit-event-btn">
+                            <a class="btn" href="{% url 'edit-event' event.pk %}"><p>EDIT</p></a>
+                        </div>
+                    {% endif %}
+                    <div class="button-container" id="subscribe-event-btn">
+                        <a class="btn" href="#"><p>SUBSCRIBE</p></a>
+                    </div>
+                </div>
             </div>
         </div>
     </main>

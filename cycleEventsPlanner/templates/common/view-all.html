@@ -7,9 +7,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href={% static 'css/reset.css' %}>
-    <link rel="stylesheet" href={% static 'css/add-event.css' %}>
+    <link rel="stylesheet" href={% static 'css/view-all.css' %}>
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
-    <title>Add an Event</title>
+    <title>View All</title>
 </head>
 <body>
     <header>
@@ -21,13 +21,15 @@
     </header>
     <main>
         <div class="outer-container">
-            <div class="form-container">
-                <h2>Add an Event:</h2>
-                <form method="post">
-                    {% csrf_token %}
-                    {{ form }}
-                    <button type="submit">Add Event</button>
-                </form>
+            <div class="links-container">
+                <div class="left-links">
+                    <a href="#" class="left-upper">Members</a>
+                    <a href="#" class="left-lower">Routes</a>
+                </div>
+                <div class="right-links">
+                    <a href="#" class="right-upper">Bikes</a>
+                    <a href="#" class="right-lower">Events</a>
+                </div>
             </div>
         </div>
     </main>
