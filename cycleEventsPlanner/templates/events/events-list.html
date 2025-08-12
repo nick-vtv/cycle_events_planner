@@ -7,9 +7,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href={% static 'css/reset.css' %}>
-    <link rel="stylesheet" href={% static 'css/bikes-list.css' %}>
+    <link rel="stylesheet" href={% static 'css/events-list.css' %}>
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
-    <title>Bikes</title>
+    <title>Events</title>
 </head>
 <body>
     <header>
@@ -21,41 +21,41 @@
     </header>
     <main>
         <div class="title-container">
-            <p>All Bikes:</p>
+            <p>All Events:</p>
         </div>
         <div class="outer-container">
-            {% for bike in bikes %}
+            {% for event in events %}
                 <div class="content-container">
-                    <a href="{% url 'bike-details' bike.pk %}">
+                    <a href="{% url 'event-details' event.pk %}">
                         <div class="content-container-inner">
-                            {% if bike.picture %}
+                            {% if event.route.route_photo %}
                                 <div class="content-image">
-                                    <img src="{{ bike.picture }}" alt="bike picture">
+                                    <img src="{{ event.route.route_photo.url }}" alt="event picture">
                                 </div>
                             {% else %}
                                 <div class="content-image">
-                                    <img src="{% static 'bike-abstract.jpg' %}" alt="no bike picture">
+                                    <img src="{% static 'mtb-event.jpg' %}" alt="no event picture">
                                 </div>
                             {% endif %}
                             <div class="content-text">
-                                <div class="top-content-container">
-                                    <p>{{ bike.manufacturer }}</p>
+                                <div class="name-container">
+                                    <p class="event-name">{{ event.name }}</p>
                                 </div>
-                                <div class="mid-content-container">
-                                    <p>{{ bike.model }}</p>
+                                <div class="route-container">
+                                    <p class="route-label">Route:</p>
+                                    <p class="event-route">{{ event.route }}</p>
                                 </div>
-                                <div class="lower-content-container">
-                                    {% if bike.user.profile %}
-                                        <p id="bike-owner-label">bike owner:</p>
-                                        <p id="bike-owner">{{ bike.user.profile }}</p>
-                                    {% endif %}
+                                <div class="datetime-container">
+                                    <p class="datetime-label">When:</p>
+                                    <p class="event-date">{{ event.event_date }}</p>
+                                    <p class="event-time">{{ event.event_time }}</p>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
             {% empty %}
-                NO BIKES
+                NO EVENTS
             {% endfor %}
         </div>
     </main>

@@ -22,7 +22,9 @@ class RouteAddView(LoginRequiredMixin, CreateView):
 
 
 class RouteListView(LoginRequiredMixin, ListView):
-    pass
+    model = Route
+    context_object_name = 'routes'
+    template_name = 'routes/routes-list.html'
 
 
 class RouteDetailView(LoginRequiredMixin, DetailView):

@@ -76,17 +76,12 @@ footer a:hover {
     justify-content: space-between;
 }
 
-.event-name {
-    font-size: 1.8rem;
+.top-content-container {
+    font-size: 2rem;
     font-weight: bold;
 }
 
-.route-label, .datetime-label {
-    font-style: italic;
-    margin-bottom: 10px;
-}
-
-.event-route, .event-date, .event-time {
+.mid-content-container, .lower-content-container {
     font-size: 1.4rem;
 }
 

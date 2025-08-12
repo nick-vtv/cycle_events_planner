@@ -7,9 +7,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href={% static 'css/reset.css' %}>
-    <link rel="stylesheet" href={% static 'css/bikes-list.css' %}>
+    <link rel="stylesheet" href={% static 'css/routes-list.css' %}>
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
-    <title>Bikes</title>
+    <title>Routes</title>
 </head>
 <body>
     <header>
@@ -21,33 +21,36 @@
     </header>
     <main>
         <div class="title-container">
-            <p>All Bikes:</p>
+            <p>All Routes:</p>
         </div>
         <div class="outer-container">
-            {% for bike in bikes %}
+            {% for route in routes %}
                 <div class="content-container">
-                    <a href="{% url 'bike-details' bike.pk %}">
+                    <a href="{% url 'route-details' route.pk %}">
                         <div class="content-container-inner">
-                            {% if bike.picture %}
+                            {% if route.route_photo %}
                                 <div class="content-image">
-                                    <img src="{{ bike.picture }}" alt="bike picture">
+                                    <img src="{{ route.route_photo.url }}" alt="route photo">
                                 </div>
                             {% else %}
                                 <div class="content-image">
-                                    <img src="{% static 'bike-abstract.jpg' %}" alt="no bike picture">
+                                    <img src="{% static 'abstract-trail.jpg' %}" alt="no route photo">
                                 </div>
                             {% endif %}
                             <div class="content-text">
                                 <div class="top-content-container">
-                                    <p>{{ bike.manufacturer }}</p>
+                                    <p>{{ route.name }}</p>
                                 </div>
                                 <div class="mid-content-container">
-                                    <p>{{ bike.model }}</p>
+                                    <p>Start Point: {{ route.start_point }}</p>
+                                    <p>End Point: {{ route.end_point }}</p>
                                 </div>
                                 <div class="lower-content-container">
-                                    {% if bike.user.profile %}
-                                        <p id="bike-owner-label">bike owner:</p>
-                                        <p id="bike-owner">{{ bike.user.profile }}</p>
+                                    {% if route.distance %}
+                                        <p>Distance (KM): {{ route.distance }}</p>
+                                    {% endif %}
+                                    {% if route.is_circular %}
+                                        <p style="font-style: italic">This is a circular route !</p>
                                     {% endif %}
                                 </div>
                             </div>
@@ -55,7 +58,7 @@
                     </a>
                 </div>
             {% empty %}
-                NO BIKES
+                NO ROUTES
             {% endfor %}
         </div>
     </main>

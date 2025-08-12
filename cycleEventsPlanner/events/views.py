@@ -21,8 +21,15 @@ class EventAddView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class EventListView(ListView):
-    pass
+class EventListView(LoginRequiredMixin, ListView):
+    model = Event
+    context_object_name = 'events'
+    template_name = 'events/events-list.html'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.order_by('-event_date')
+        return queryset
 
 
 class EventDetailView(LoginRequiredMixin, DetailView):
