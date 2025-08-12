@@ -32,6 +32,17 @@ class EventListView(LoginRequiredMixin, ListView):
         return queryset
 
 
+class MyEventsListView(LoginRequiredMixin, ListView):
+    model = Event
+    context_object_name = 'events'
+    template_name = 'events/my-events.html'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(created_by__pk=self.request.user.pk)
+        return queryset
+
+
 class EventDetailView(LoginRequiredMixin, DetailView):
     model = Event
     context_object_name = 'event'

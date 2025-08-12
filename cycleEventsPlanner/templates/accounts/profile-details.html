@@ -20,6 +20,15 @@
         {% endif %}
     </header>
     <main>
+        {% if object.pk == request.user.pk %}
+            <div class="title-container">
+                <p>My Profile Details:</p>
+            </div>
+        {% else %}
+            <div class="title-container">
+                <p>Profile Details:</p>
+            </div>
+        {% endif %}
         <div class="outer-container">
             <div class="profile-container">
                 {% if object.profile_picture %}
@@ -33,7 +42,7 @@
                 {% endif %}
                 <div class="profile-text">
                     {% if object.pk == request.user.pk %}
-                        <p class="profile-email">Email: {{ object.user.email }}</p>
+                        <p class="profile-email">{{ object.user.email }}</p>
                     {% endif %}
                     <p class="profile-nickname">Nickname: {{ object.nickname }}</p>
                     {% if object.pk == request.user.pk %}
@@ -55,14 +64,10 @@
             </div>
             {% if object.pk == request.user.pk %}
                 <div class="links-container">
-                    <div class="left-links">
-                        <a href="#" class="left-upper">My Bikes</a>
-                        <a href="#" class="left-lower">My Events</a>
-                    </div>
-                    <div class="right-links">
-                        <a href="#" class="right-upper">My Routes</a>
-                        <a href="#" class="right-lower">Subscribed Events</a>
-                    </div>
+                    <a href="{% url 'my-bikes' %}" class="first-lnk">My Bikes</a>
+                    <a href="{% url 'my-events' %}" class="second-lnk">My Events</a>
+                    <a href="{% url 'my-routes' %}" class="third-lnk">My Routes</a>
+                    <a href="#" class="fourth-lnk">Subscribed Events</a>
                 </div>
             {% endif %}
         </div>

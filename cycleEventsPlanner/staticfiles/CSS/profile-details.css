@@ -80,49 +80,24 @@ footer a:hover {
     font-size: 3rem;
     display: flex;
     flex-direction: row;
-    width: 60%;
+    width: 85%;
     padding: 40px;
+    justify-content: space-between;
 }
 
-.left-upper {
-    border-bottom: 1px solid black;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-right: 40px;
+.links-container {
+    padding-bottom: 0;
 }
 
-.left-lower {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-right: 40px;
+.first-lnk, .second-lnk, .third-lnk, .fourth-lnk {
+    flex-grow: 1;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-.right-upper {
-    border-bottom: 1px solid black;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 40px;
-}
-
-.right-lower {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 40px;
-}
-
-.left-links {
-    text-align: right;
-    display: flex;
-    flex-direction: column;
-    width: 50%;
+.first-lnk, .second-lnk, .third-lnk {
     border-right: 1px solid black;
-}
-
-.right-links {
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    width: 50%;
 }
 
 .links-container a:hover {
@@ -134,11 +109,15 @@ footer a:hover {
     color: black;
 }
 
+.profile-email {
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
 .button-container {
     display: flex;
     flex-direction: row;
     gap: 25px;
-
 }
 
 .btn {
@@ -164,4 +143,10 @@ footer a:hover {
 
 .btn:hover p {
     color: dimgrey;
+}
+
+.title-container p {
+    text-align: center;
+    color: black;
+    font-size: 2.5rem;
 }

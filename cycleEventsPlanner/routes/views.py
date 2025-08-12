@@ -27,6 +27,17 @@ class RouteListView(LoginRequiredMixin, ListView):
     template_name = 'routes/routes-list.html'
 
 
+class MyRoutesListView(LoginRequiredMixin, ListView):
+    model = Route
+    context_object_name = 'routes'
+    template_name = 'routes/my-routes.html'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(created_by__pk=self.request.user.pk)
+        return queryset
+
+
 class RouteDetailView(LoginRequiredMixin, DetailView):
     model = Route
     context_object_name = 'route'

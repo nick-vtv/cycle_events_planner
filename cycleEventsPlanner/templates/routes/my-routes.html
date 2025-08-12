@@ -1,0 +1,67 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={% static 'css/reset.css' %}>
+    <link rel="stylesheet" href={% static 'css/routes-list.css' %}>
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <title>Routes</title>
+</head>
+<body>
+    <header>
+        {% if request.user.is_authenticated %}
+            {% include 'common/header-authorized.html' %}
+        {% else %}
+            {% include 'common/header-anonymous.html' %}
+        {% endif %}
+    </header>
+    <main>
+        <div class="title-container">
+            <p>My Routes:</p>
+        </div>
+        <div class="outer-container">
+            {% for route in routes %}
+                <div class="content-container">
+                    <a href="{% url 'route-details' route.pk %}">
+                        <div class="content-container-inner">
+                            {% if route.route_photo %}
+                                <div class="content-image">
+                                    <img src="{{ route.route_photo.url }}" alt="route photo">
+                                </div>
+                            {% else %}
+                                <div class="content-image">
+                                    <img src="{% static 'abstract-trail.jpg' %}" alt="no route photo">
+                                </div>
+                            {% endif %}
+                            <div class="content-text">
+                                <div class="top-content-container">
+                                    <p>{{ route.name }}</p>
+                                </div>
+                                <div class="mid-content-container">
+                                    <p>Start Point: {{ route.start_point }}</p>
+                                    <p>End Point: {{ route.end_point }}</p>
+                                </div>
+                                <div class="lower-content-container">
+                                    {% if route.distance %}
+                                        <p>Distance (KM): {{ route.distance }}</p>
+                                    {% endif %}
+                                    {% if route.is_circular %}
+                                        <p style="font-style: italic">This is a circular route !</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% empty %}
+                NO ROUTES
+            {% endfor %}
+        </div>
+    </main>
+    {% include 'common/footer.html' %}
+</body>
+</html>

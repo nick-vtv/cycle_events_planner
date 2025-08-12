@@ -27,6 +27,17 @@ class BikeListView(LoginRequiredMixin, ListView):
     template_name = 'bikes/bikes-list.html'
 
 
+class MyBikesListView(LoginRequiredMixin, ListView):
+    model = Bike
+    context_object_name = 'bikes'
+    template_name = 'bikes/my-bikes.html'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(user__pk=self.request.user.pk)
+        return queryset
+
+
 class BikeDetailView(LoginRequiredMixin, DetailView):
     model = Bike
     context_object_name = 'bike'
