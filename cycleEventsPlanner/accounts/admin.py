@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 
-from accounts.forms import AccountCreationForm
+from accounts.forms import AccountCreationForm, AccountChangeForm
 from accounts.models import Profile
 
 UserModel = get_user_model()
@@ -10,7 +10,9 @@ UserModel = get_user_model()
 # Register your models here.
 @admin.register(UserModel)
 class AccountAdmin(UserAdmin):
-    form = AccountCreationForm
+    model = UserModel
+    add_form = AccountCreationForm
+    form = AccountChangeForm
 
     list_display = ('email', 'is_active', 'is_staff',)
 
