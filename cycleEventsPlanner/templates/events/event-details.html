@@ -57,6 +57,26 @@
                 </div>
             </div>
         </div>
+        <div class="comments-container-outer">
+            <div class="comments-container-inner">
+                <div class="comments">
+                    {% for comment in all_comments %}
+                        <div class="single-comment">
+                            <p>{{ comment.comment }}</p>
+                            <p class="comment-by">(by {{ comment.created_by.profile }})</p>
+                        </div>
+                    {% empty %}
+                        <p>NO COMMENTS</p>
+                    {% endfor %}
+                </div>
+                <div class="comments-form-container">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button type="submit" id="form-btn">ADD COMMENT</button>
+                </form>
+            </div>
+        </div>
     </main>
     {% include 'common/footer.html' %}
 </body>

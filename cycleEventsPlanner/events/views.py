@@ -1,8 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView
 
+from common.forms import CommentCreateForm
 from events.forms import EventCreateForm, EventEditForm
 from events.models import Event
 
@@ -47,6 +48,25 @@ class EventDetailView(LoginRequiredMixin, DetailView):
     model = Event
     context_object_name = 'event'
     template_name = 'events/event-details.html'
+    form_class = CommentCreateForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update({
+            'all_comments': self.object.event_comments.all(),
+            'form': self.form_class
+        })
+        return context
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        comment_form = self.form_class(request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.created_by = self.request.user
+            comment.for_event = self.object
+            comment.save()
+            return redirect('event-details', pk=self.object.pk)
 
 
 class EventUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):

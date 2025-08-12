@@ -64,10 +64,11 @@
             </div>
             {% if object.pk == request.user.pk %}
                 <div class="links-container">
-                    <a href="{% url 'my-bikes' %}" class="first-lnk">My Bikes</a>
-                    <a href="{% url 'my-events' %}" class="second-lnk">My Events</a>
-                    <a href="{% url 'my-routes' %}" class="third-lnk">My Routes</a>
-                    <a href="#" class="fourth-lnk">Subscribed Events</a>
+                    <a href="{% url 'add-bike' %}" class="first-lnk">Add New Bike</a>
+                    <a href="{% url 'my-bikes' %}" class="second-lnk">My Bikes</a>
+                    <a href="{% url 'my-events' %}" class="third-lnk">My Events</a>
+                    <a href="{% url 'my-routes' %}" class="fourth-lnk">My Routes</a>
+                    <a href="#" class="fifth-lnk">Subscribed Events</a>
                 </div>
             {% endif %}
         </div>

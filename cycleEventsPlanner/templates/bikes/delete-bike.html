@@ -23,7 +23,11 @@
         <div class="outer-container">
             <div class="form-container">
                 <h2>Are you sure you want to delete your bike?</h2>
-                <p>{{ bike }} {{ bike.year }}</p>
+                {% if bike.year %}
+                    <p>{{ bike }} {{ bike.year }}</p>
+                {% else %}
+                    <p>{{ bike }}</p>
+                {% endif %}
                 <form method="post">
                     {% csrf_token %}
                     <button type="submit">DELETE</button>

@@ -80,7 +80,7 @@ footer a:hover {
     font-size: 3rem;
     display: flex;
     flex-direction: row;
-    width: 85%;
+    width: 90%;
     padding: 40px;
     justify-content: space-between;
 }
@@ -89,14 +89,14 @@ footer a:hover {
     padding-bottom: 0;
 }
 
-.first-lnk, .second-lnk, .third-lnk, .fourth-lnk {
+.first-lnk, .second-lnk, .third-lnk, .fourth-lnk, .fifth-lnk {
     flex-grow: 1;
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
-.first-lnk, .second-lnk, .third-lnk {
+.first-lnk, .second-lnk, .third-lnk, .fourth-lnk {
     border-right: 1px solid black;
 }
 

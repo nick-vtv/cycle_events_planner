@@ -12,7 +12,7 @@ class BikeAddView(LoginRequiredMixin, CreateView):
     model = Bike
     form_class = BikeCreateForm
     template_name = 'bikes/add-bike.html'
-    success_url = reverse_lazy('about')
+    success_url = reverse_lazy('my-bikes')
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
@@ -60,7 +60,7 @@ class BikeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class BikeDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Bike
     context_object_name = 'bike'
-    success_url = reverse_lazy('about')
+    success_url = reverse_lazy('my-bikes')
     template_name = 'bikes/delete-bike.html'
 
     def test_func(self):

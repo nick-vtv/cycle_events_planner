@@ -12,7 +12,7 @@ class RouteAddView(LoginRequiredMixin, CreateView):
     model = Route
     form_class = RouteCreateForm
     template_name = 'routes/add-route.html'
-    success_url = reverse_lazy('about')
+    success_url = reverse_lazy('my-routes')
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
