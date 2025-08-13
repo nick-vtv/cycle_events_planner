@@ -10,7 +10,7 @@ class EventBaseForm(forms.ModelForm):
 
         labels = {
             'name': 'Event Name',
-            'route': 'Route Name',
+            'route': 'Choose a Route',
             'event_date': 'Event Date',
             'event_time': 'Event Time',
             'description': 'Brief Description',

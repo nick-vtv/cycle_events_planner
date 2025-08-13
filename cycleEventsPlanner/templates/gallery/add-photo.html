@@ -1,0 +1,36 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={% static 'css/reset.css' %}>
+    <link rel="stylesheet" href={% static 'css/add-photo.css' %}>
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <title>Add Photo</title>
+</head>
+<body>
+    <header>
+        {% if request.user.is_authenticated %}
+            {% include 'common/header-authorized.html' %}
+        {% else %}
+            {% include 'common/header-anonymous.html' %}
+        {% endif %}
+    </header>
+    <main>
+        <div class="outer-container">
+            <div class="form-container">
+                <h2>Add New Event Photo:</h2>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button type="submit">Add Photo</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    {% include 'common/footer.html' %}
+</body>
+</html>

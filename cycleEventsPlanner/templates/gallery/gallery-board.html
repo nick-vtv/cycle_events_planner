@@ -20,9 +20,15 @@
         {% endif %}
     </header>
     <main>
-        <div class="title-container">
-            <p><a href="#">Add New Event Photo</a></p>
-        </div>
+        {% if request.user.is_authenticated %}
+            <div class="title-container">
+                <p><a href="{% url 'gallery-add-photo' %}">Add New Event Photo</a></p>
+            </div>
+        {% else %}
+            <div class="title-container">
+                <p>Event Photos:</p>
+            </div>
+        {% endif %}
         <div class="outer-container">
             {% for photo in photos %}
                 <div class="content-container">
