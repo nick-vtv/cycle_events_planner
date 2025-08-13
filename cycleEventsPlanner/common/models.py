@@ -39,3 +39,5 @@ class Comment(models.Model):
 
     comment = models.TextField()
 
+    def __str__(self):
+        return f'by {self.created_by.profile} on {self.created_at}'

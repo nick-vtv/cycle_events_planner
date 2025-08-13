@@ -6,4 +6,5 @@ from events.models import Event
 # Register your models here.
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
-    pass
+
+    ordering = ('-event_date', '-event_time')

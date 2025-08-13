@@ -6,4 +6,5 @@ from routes.models import Route
 # Register your models here.
 @admin.register(Route)
 class RouteAdmin(admin.ModelAdmin):
-    pass
+
+    ordering = ('-created_at', )

@@ -16,7 +16,7 @@ class AccountAdmin(UserAdmin):
 
     list_display = ('email', 'is_active', 'is_staff',)
 
-    ordering = ('email',)
+    ordering = ('email', )
 
     fieldsets = (
         (None, {"fields": ("email", "password")}),
@@ -48,4 +48,5 @@ class AccountAdmin(UserAdmin):
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
-    pass
+
+    ordering = ('nickname', )
