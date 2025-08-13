@@ -26,6 +26,7 @@ urlpatterns = [
     path('bikes/', include('bikes.urls')),
     path('events/', include('events.urls')),
     path('routes/', include('routes.urls')),
+    path('gallery/', include('gallery.urls')),
 ]
 
 if settings.DEBUG:

@@ -15,6 +15,11 @@ def about(request):
 def view_all(request):
     return render(request, 'common/view-all.html')
 
+
+def in_development(request):
+    return render(request, 'under-construction.html')
+
+
 @login_required
 def subscribe(request, event_pk):
     event = Event.objects.get(pk=event_pk)

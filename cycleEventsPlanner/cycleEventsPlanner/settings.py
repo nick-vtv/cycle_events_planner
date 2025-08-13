@@ -38,6 +38,7 @@ PROJECT_APPS = [
     'routes.apps.RoutesConfig',
     'events.apps.EventsConfig',
     'common.apps.CommonConfig',
+    'gallery.apps.GalleryConfig',
 ]
 
 INSTALLED_APPS = [
