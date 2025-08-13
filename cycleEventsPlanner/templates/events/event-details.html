@@ -51,8 +51,15 @@
                             <a class="btn" href="{% url 'edit-event' event.pk %}"><p>EDIT</p></a>
                         </div>
                     {% endif %}
-                    <div class="button-container" id="subscribe-event-btn">
-                        <a class="btn" href="{% url 'subscribe' event_pk=event.pk %}"><p>SUBSCRIBE</p></a>
+                    {% if is_subscribed %}
+                        <div class="button-container" id="unsubscribe-event-btn">
+                            <a class="btn" href="{% url 'subscribe' event_pk=event.pk %}"><p>UNSUBSCRIBE</p></a>
+                        </div>
+                    {% else %}
+                        <div class="button-container" id="subscribe-event-btn">
+                            <a class="btn" href="{% url 'subscribe' event_pk=event.pk %}"><p>SUBSCRIBE</p></a>
+                        </div>
+                    {% endif %}
                     </div>
                 </div>
             </div>

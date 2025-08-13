@@ -4,6 +4,7 @@ from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView
 
 from common.forms import CommentCreateForm
+from common.models import Subscribe
 from events.forms import EventCreateForm, EventEditForm
 from events.models import Event
 
@@ -44,6 +45,16 @@ class MyEventsListView(LoginRequiredMixin, ListView):
         return queryset
 
 
+class MySubscribedEventsListView(LoginRequiredMixin, ListView):
+    model = Event
+    context_object_name = 'events'
+    template_name = 'events/subscribed-events.html'
+
+    def get_queryset(self):
+        queryset = Event.objects.filter(subscribed__from_profile__pk=self.request.user.pk).order_by('event_date')
+        return queryset
+
+
 class EventDetailView(LoginRequiredMixin, DetailView):
     model = Event
     context_object_name = 'event'
@@ -52,10 +63,18 @@ class EventDetailView(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context.update({
-            'all_comments': self.object.event_comments.all(),
-            'form': self.form_class
-        })
+        subscription = Subscribe.objects.filter(for_event__pk=self.get_object().pk, from_profile__pk=self.request.user.pk).first()
+        if subscription:
+            context.update({
+                'all_comments': self.object.event_comments.all(),
+                'form': self.form_class,
+                'is_subscribed': subscription
+            })
+        else:
+            context.update({
+                'all_comments': self.object.event_comments.all(),
+                'form': self.form_class
+            })
         return context
 
     def post(self, request, *args, **kwargs):

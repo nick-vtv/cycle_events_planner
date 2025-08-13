@@ -1,0 +1,63 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={% static 'css/reset.css' %}>
+    <link rel="stylesheet" href={% static 'css/events-list.css' %}>
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <title>Subscribed Events</title>
+</head>
+<body>
+    <header>
+        {% if request.user.is_authenticated %}
+            {% include 'common/header-authorized.html' %}
+        {% else %}
+            {% include 'common/header-anonymous.html' %}
+        {% endif %}
+    </header>
+    <main>
+        <div class="title-container">
+            <p>Subscribed Events:</p>
+        </div>
+        <div class="outer-container">
+            {% for event in events %}
+                <div class="content-container">
+                    <a href="{% url 'event-details' event.pk %}">
+                        <div class="content-container-inner">
+                            {% if event.route.route_photo %}
+                                <div class="content-image">
+                                    <img src="{{ event.route.route_photo.url }}" alt="event picture">
+                                </div>
+                            {% else %}
+                                <div class="content-image">
+                                    <img src="{% static 'mtb-event.jpg' %}" alt="no event picture">
+                                </div>
+                            {% endif %}
+                            <div class="content-text">
+                                <div class="name-container">
+                                    <p class="event-name">{{ event.name }}</p>
+                                </div>
+                                <div class="route-container">
+                                    <p class="route-label">Route:</p>
+                                    <p class="event-route">{{ event.route }}</p>
+                                </div>
+                                <div class="datetime-container">
+                                    <p class="datetime-label">When:</p>
+                                    <p class="event-date">{{ event.event_date }}</p>
+                                    <p class="event-time">{{ event.event_time }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% empty %}
+            {% endfor %}
+        </div>
+    </main>
+    {% include 'common/footer.html' %}
+</body>
+</html>

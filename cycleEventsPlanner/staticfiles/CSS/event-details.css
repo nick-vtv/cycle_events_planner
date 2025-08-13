@@ -123,11 +123,11 @@ footer a:hover {
 }
 
 #subscribe-event-btn:hover {
-    outline: 2px solid darkred;
+    outline: 2px solid dimgrey;
 }
 
 #subscribe-event-btn:hover p {
-    color: darkred;
+    color: dimgrey;
 }
 
 #event-route-link {
@@ -234,4 +234,28 @@ form {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+#subscribe-event-btn:hover {
+    outline: 2px solid dimgrey;
+}
+
+#subscribe-event-btn:hover p {
+    color: dimgrey;
+}
+
+#unsubscribe-event-btn {
+    outline: 2px solid darkred;
+}
+
+#unsubscribe-event-btn p {
+    color: darkred;
+}
+
+#unsubscribe-event-btn:hover {
+    outline: 2px solid dimgrey;
+}
+
+#unsubscribe-event-btn:hover p {
+    color: dimgrey;
 }

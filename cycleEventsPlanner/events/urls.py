@@ -1,11 +1,13 @@
 from django.urls import path, include
 
-from events.views import EventAddView, EventDetailView, EventUpdateView, EventListView, MyEventsListView
+from events.views import EventAddView, EventDetailView, EventUpdateView, EventListView, MyEventsListView, \
+    MySubscribedEventsListView
 
 urlpatterns = [
     path('add/', EventAddView.as_view(), name='add-event'),
     path('all/', EventListView.as_view(), name='all-events'),
     path('my-events/', MyEventsListView.as_view(), name='my-events'),
+    path('subscribed-events/', MySubscribedEventsListView.as_view(), name='subscribed-events'),
         path('<int:pk>/', include([
             path('', EventDetailView.as_view(), name='event-details'),
             path('edit/', EventUpdateView.as_view(), name='edit-event'),
