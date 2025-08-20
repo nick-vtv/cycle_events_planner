@@ -6,7 +6,9 @@ Concept, design, back-end and front-end functionality developed by me.
 
 
 Deployed and running @ Debian 12 + postgreSQL17 + Gunicorn + Nginx
+
 Currently accessible at:
+
 https://werewolf-open-aphid.ngrok-free.app/
 
 
