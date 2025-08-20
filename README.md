@@ -12,6 +12,8 @@ Currently accessible at:
 
 https://werewolf-open-aphid.ngrok-free.app/
 
+Best visual experience @ 1920 x 1080 fullscreen.
+
 #
 
 DB credentials and Project secrets are loaded from separate .env file !
